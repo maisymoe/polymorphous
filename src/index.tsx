@@ -4,7 +4,7 @@ import "@unocss/reset/tailwind.css";
 import { Component, Show } from "solid-js";
 import { createSignal } from "solid-js";
 import { render } from "solid-js/web";
-import { legacyToIntermediate } from "drn-theme-converter";
+import { legacyToPolyTheme } from "drn-theme-converter";
 import { uploadFile } from "./lib/files";
 import Button from "./components/Button";
 import ThemeCard from "./components/ThemeCard";
@@ -32,7 +32,7 @@ const App: Component = () => {
                 <div>
                     <h1 class="text-4xl" style={{ color: theme().semanticColors.HEADER_PRIMARY[0] }}>Polymorphous</h1>
                     <p class="text-lg">A tool to convert legacy themes to the Polytheme format.</p>
-                    <Button class="my-2" onClick={() => uploadFile().then(f => setTheme(legacyToIntermediate(JSON.parse(f))))}>Upload Theme</Button>
+                    <Button class="my-2" onClick={() => uploadFile().then(f => setTheme(legacyToPolyTheme(JSON.parse(f))))}>Upload Theme</Button>
                     <Show when={"name" in theme()}>
                         <ThemeCard />
                     </Show>
