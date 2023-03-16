@@ -1,0 +1,24 @@
+{
+    "name": "polymorphous",
+    "version": "1.0.0",
+    "description": "Website making use of drn-theme-converter",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "serve": "vite preview"
+    },
+    "license": "BSD-3-Clause",
+    "devDependencies": {
+        "@unocss/preset-uno": "^0.50.6",
+        "@unocss/reset": "^0.50.6",
+        "@unocss/transformer-variant-group": "^0.50.6",
+        "@unocss/vite": "^0.50.6",
+        "typescript": "^5.0.2",
+        "vite": "^4.2.0",
+        "vite-plugin-solid": "^2.6.1"
+    },
+    "dependencies": {
+        "drn-theme-converter": "^1.1.0",
+        "solid-js": "^1.6.15"
+    }
+}
