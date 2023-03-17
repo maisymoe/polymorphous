@@ -1,7 +1,7 @@
 import "uno.css";
 import "@unocss/reset/tailwind.css";
 
-import { Component, Show } from "solid-js";
+import { Component, Show, createEffect } from "solid-js";
 import { createSignal } from "solid-js";
 import { render } from "solid-js/web";
 import { legacyToPolyTheme } from "drn-theme-converter";
@@ -17,12 +17,12 @@ export const [theme, setTheme] = createSignal<any>({
         HEADER_PRIMARY: ["#f2f3f5"],
         TEXT_NORMAL: ["#dbdee1"],
     },
-    rawColors: {
-        BRAND_500: "#5865f2",
-    }
+    rawColors: { BRAND_500: "#5865f2" }
 });
 
 const App: Component = () => {
+    createEffect(() => document.head.querySelector("meta[name=theme-color]").setAttribute("content", theme().rawColors.BRAND_500));
+
     return (
         <main class="grid h-full place-items-center text-center" style={{ 
             "background-color": theme().semanticColors.BACKGROUND_PRIMARY[0],
