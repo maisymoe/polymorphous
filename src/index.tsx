@@ -16,23 +16,40 @@ export const [theme, setTheme] = createSignal<any>({
         BACKGROUND_TERTIARY: ["#1e1f22"],
         HEADER_PRIMARY: ["#f2f3f5"],
         TEXT_NORMAL: ["#dbdee1"],
+        INTERACTIVE_ACTIVE: ["#f2f3f5"],
     },
-    rawColors: { BRAND_500: "#5865f2" }
+    rawColors: { BRAND_500: "#5865f2" },
 });
 
 const App: Component = () => {
     createEffect(() => document.head.querySelector("meta[name=theme-color]").setAttribute("content", theme().rawColors.BRAND_500));
 
     return (
-        <main class="grid h-full place-items-center text-center" style={{ 
-            "background-color": theme().semanticColors.BACKGROUND_PRIMARY[0],
-            "color": theme().semanticColors.TEXT_NORMAL[0],
-        }}>
+        <main
+            class="grid h-full place-items-center text-center"
+            style={{
+                "background-color": theme().semanticColors.BACKGROUND_PRIMARY[0],
+                color: theme().semanticColors.TEXT_NORMAL[0],
+            }}
+        >
             <div class="flex flex-col gap-2 items-center">
                 <div>
-                    <h1 class="text-4xl" style={{ color: theme().semanticColors.HEADER_PRIMARY[0] }}>Polymorphous</h1>
-                    <p class="text-lg">A tool to convert legacy themes to the Polytheme format.</p>
-                    <Button class="my-2" onClick={() => uploadFile().then(f => setTheme(legacyToPolyTheme(JSON.parse(f))))}>Upload Theme</Button>
+                    <h1 class="text-4xl" style={{ color: theme().semanticColors.HEADER_PRIMARY[0] }}>
+                        Polymorphous
+                    </h1>
+                    <p class="text-lg">A tool to convert legacy DiscordRN themes to the Polytheme format.</p>
+                    <Button
+                        class="my-2"
+                        onClick={() => uploadFile()
+                            .then((f) => setTheme(legacyToPolyTheme(JSON.parse(f))))
+                            .catch((e) => {
+                                console.error("Failed to convert theme!\n", e);
+                                alert("Invalid theme! Is it in legacy format?");
+                            })
+                        }
+                    >
+                        Upload Theme
+                    </Button>
                     <Show when={"name" in theme()}>
                         <ThemeCard />
                     </Show>

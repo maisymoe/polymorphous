@@ -1,7 +1,7 @@
 {
     "name": "polymorphous",
     "version": "1.0.0",
-    "description": "Website making use of drn-theme-converter",
+    "description": "A website to convert legacy DiscordRN themes to the Polytheme format.",
     "scripts": {
         "dev": "vite",
         "build": "vite build",

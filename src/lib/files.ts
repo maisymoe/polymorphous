@@ -1,4 +1,4 @@
-export const uploadFile = async (): Promise<any> => new Promise((resolve) => {
+export const uploadFile = async () => new Promise<string>((resolve) => {
     const domNode = document.createElement("input");
     domNode.setAttribute("accept", "application/json");
     domNode.setAttribute("type", "file");
